@@ -1,0 +1,16 @@
+{
+    "name": "eidsonator/erray",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Eidsonator\\Erray\\": "src"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^6.4"
+    },
+    "config": {
+        "sort-packages": true,
+        "bin-dir": "bin"
+    }
+}
