@@ -27,7 +27,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function current()
     {
-        $this->items[$this->position];
+        return $this->items[$this->position];
     }
 
     /**
@@ -38,7 +38,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function next()
     {
-        ++$this->position;
+        $this->position++;
     }
 
     /**
