@@ -11,10 +11,12 @@ namespace Eidsonator\Erray;
 class Erray implements \Iterator, \Countable, \ArrayAccess
 {
     private $items;
+    private $position = 0;
 
     public function __construct(array $items = null)
     {
         $this->items = $items;
+        $this->position = 0;
     }
 
     /**
@@ -25,7 +27,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function current()
     {
-        // TODO: Implement current() method.
+        $this->items[$this->position];
     }
 
     /**
@@ -36,7 +38,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function next()
     {
-        // TODO: Implement next() method.
+        ++$this->position;
     }
 
     /**
@@ -47,7 +49,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function key()
     {
-        // TODO: Implement key() method.
+        return $this->position;
     }
 
     /**
@@ -59,7 +61,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function valid()
     {
-        // TODO: Implement valid() method.
+        return isset($this->items[$this->position]);
     }
 
     /**
@@ -70,7 +72,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function rewind()
     {
-        // TODO: Implement rewind() method.
+        $this->position = 0;
     }
 
     /**
@@ -87,7 +89,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        // TODO: Implement offsetExists() method.
+        return isset($this->items[$offset]);
     }
 
     /**
@@ -101,7 +103,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function offsetGet($offset)
     {
-        // TODO: Implement offsetGet() method.
+        return isset($this->items[$offset]) ? $this->items[$offset] : null;
     }
 
     /**
@@ -118,7 +120,11 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        // TODO: Implement offsetSet() method.
+        if (is_null($offset)) {
+            $this->items[] = $value;
+        } else {
+            $this->items[$offset] = $value;
+        }
     }
 
     /**
@@ -132,7 +138,7 @@ class Erray implements \Iterator, \Countable, \ArrayAccess
      */
     public function offsetUnset($offset)
     {
-        // TODO: Implement offsetUnset() method.
+        unset($this->items[$offset]);
     }
 
     /**
